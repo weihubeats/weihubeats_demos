@@ -1,0 +1,19 @@
+server:
+  port: 8090
+
+spring:
+  xiaozou:
+    test:
+      name: xiaozou
+      student:
+        name: xuesheng
+        teachers: 
+          - name: teacherName
+            age: 15
+          - name: teacherName1
+            age: 18
+        
+            
+
+
+
