@@ -1,0 +1,10 @@
+server:
+  port: 8090
+
+
+spring:
+  cloud:
+    kubernetes:
+      client:
+        namespace: default
+      enabled: true
