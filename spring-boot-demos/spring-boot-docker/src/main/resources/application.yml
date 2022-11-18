@@ -1,9 +1,9 @@
 
 
 server:
-  port: 8090
+  port: 9004
 spring:
   application:
-    name: zou-fabric8
+    name: boot-docker
 
 

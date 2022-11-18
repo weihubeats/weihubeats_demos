@@ -1,4 +1,4 @@
-package com.zou.spring.boot.fabric8.maven.plugin;
+package com.zou.spring.boot.kubernetes.maven.plugin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -12,7 +12,8 @@
 	<modules>
 		<module>spring-boot-jib</module>
 		<module>spring-boot-configurationProperties</module>
-		<module>spring-boot-fabric8-maven-plugin</module>
+		<module>spring-boot-kubernetes-maven-plugin</module>
+		<module>spring-boot-docker</module>
 	</modules>
 
 	<artifactId>spring-boot-demos</artifactId>

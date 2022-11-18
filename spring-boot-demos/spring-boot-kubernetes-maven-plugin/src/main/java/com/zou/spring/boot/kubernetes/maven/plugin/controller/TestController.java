@@ -1,4 +1,4 @@
-package com.zou.spring.boot.fabric8.maven.plugin.controller;
+package com.zou.spring.boot.kubernetes.maven.plugin.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
