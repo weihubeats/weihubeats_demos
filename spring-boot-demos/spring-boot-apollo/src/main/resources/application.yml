@@ -1,0 +1,17 @@
+server:
+  port: 8090
+
+
+app:
+  id: test
+apollo:
+  bootstrap:
+    enabled: true
+    namespaces: test.yml
+  meta: http://127.0.0.1:8080
+
+        
+            
+
+
+
