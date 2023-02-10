@@ -14,6 +14,7 @@
 		<module>spring-boot-configurationProperties</module>
 		<module>spring-boot-kubernetes-maven-plugin</module>
 		<module>spring-boot-docker</module>
+		<module>spring-boot-apollo</module>
 	</modules>
 
 	<artifactId>spring-boot-demos</artifactId>

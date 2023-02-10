@@ -11,6 +11,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>spring-cloud-kubernetes</module>
+		<module>spring-cloud-namedContextFactory</module>
 	</modules>
 
 	<artifactId>spring-cloud-demos</artifactId>
