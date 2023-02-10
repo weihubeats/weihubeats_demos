@@ -10,6 +10,7 @@
 	<modules>
 		<module>spring-boot-demos</module>
 		<module>spring-cloud-demos</module>
+		<module>java-demos</module>
 	</modules>
 	<packaging>pom</packaging>
 
