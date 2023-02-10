@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>rocketmq-demo</module>
+        <module>grpc-demo</module>
     </modules>
 
     <properties>
