@@ -29,6 +29,7 @@
 
     <build>
         <plugins>
+            
             <plugin>
                 <groupId>org.xolstice.maven.plugins</groupId>
                 <artifactId>protobuf-maven-plugin</artifactId>
@@ -51,6 +52,8 @@
                     </execution>
                 </executions>
             </plugin>
+            
+            
         </plugins>
 
     </build>
