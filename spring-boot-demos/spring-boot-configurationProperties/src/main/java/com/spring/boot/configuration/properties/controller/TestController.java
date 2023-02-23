@@ -1,5 +1,6 @@
 package com.spring.boot.configuration.properties.controller;
 
+import com.spring.boot.configuration.properties.config.Test1Properties;
 import com.spring.boot.configuration.properties.config.TestProperties;
 import lombok.RequiredArgsConstructor;
 
@@ -15,15 +16,22 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping
-@EnableConfigurationProperties(TestProperties.class)
+@EnableConfigurationProperties({TestProperties.class, Test1Properties.class})
 @RequiredArgsConstructor
 public class TestController {
 
 	private final TestProperties testProperties;
+
+	private final Test1Properties test1Properties;
 	
 	@GetMapping("/test")
 	public void test() {
 		System.out.println(testProperties);
 		
+	}
+
+	@GetMapping("/test1")
+	public void test1() {
+		System.out.println(test1Properties);
 	}
 }
