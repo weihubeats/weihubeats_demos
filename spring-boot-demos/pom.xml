@@ -9,13 +9,15 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<packaging>pom</packaging>
+	
 	<modules>
 		<module>spring-boot-jib</module>
 		<module>spring-boot-configurationProperties</module>
 		<module>spring-boot-kubernetes-maven-plugin</module>
 		<module>spring-boot-docker</module>
 		<module>spring-boot-apollo</module>
-	</modules>
+        <module>spring-boot-skywalking</module>
+    </modules>
 
 	<artifactId>spring-boot-demos</artifactId>
 
