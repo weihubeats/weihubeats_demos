@@ -1,0 +1,9 @@
+server:
+  port: 8090
+
+
+spring:
+  application:
+    name: product-service
+  profiles:
+    active: test

@@ -31,7 +31,7 @@
         <appender-ref ref="GRPC-LOG" />
     </root>
 
-    <logger name="com.skywalking.order" level="INFO"/>
+    <logger name="com.skywalking.product" level="INFO"/>
 
         <springProfile name="test">
             <logger name="com.skywalking.order" level="DEBUG" additivity="true">

@@ -1,0 +1,9 @@
+server:
+  port: 8091
+
+
+spring:
+  application:
+    name: order-service
+  profiles:
+    active: test
