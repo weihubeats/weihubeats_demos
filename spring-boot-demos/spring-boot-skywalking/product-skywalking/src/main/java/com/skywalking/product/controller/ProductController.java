@@ -1,5 +1,6 @@
 package com.skywalking.product.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,10 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/product")
+@Slf4j
 public class ProductController {
 
     @GetMapping("/get")
-    public String get(Integer id) {
-        return "product:" + id;
+    public String get(String name) {
+        log.info("product get name:{}", name);
+        return "product:" + name;
     }
 }

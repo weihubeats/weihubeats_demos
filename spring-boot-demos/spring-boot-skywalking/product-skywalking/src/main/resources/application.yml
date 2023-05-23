@@ -7,3 +7,6 @@ spring:
     name: product-service
   profiles:
     active: test
+
+logging:
+  config: classpath:product-logback.xml

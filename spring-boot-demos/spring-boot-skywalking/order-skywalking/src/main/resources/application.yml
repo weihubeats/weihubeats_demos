@@ -7,3 +7,5 @@ spring:
     name: order-service
   profiles:
     active: test
+logging:
+  config: classpath:order-logback.xml

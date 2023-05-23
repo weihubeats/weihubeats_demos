@@ -2,6 +2,7 @@ package com.skywalking.order;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  *@author : wh
@@ -9,9 +10,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *@description:
  */
 @SpringBootApplication
-public class Application {
+@EnableFeignClients
+public class OrderApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(OrderApplication.class, args);
 	}
 }
