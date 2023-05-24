@@ -16,6 +16,8 @@
         <module>grpc-demo</module>
         <module>commons-cli-demo</module>
         <module>java-base</module>
+        <module>byteBuddy-demo</module>
+        <module>agent-demo</module>
     </modules>
 
     <properties>

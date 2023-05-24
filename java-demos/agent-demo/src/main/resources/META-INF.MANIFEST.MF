@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Can-Redefine-Classes: true   # true表示能重定义此代理所需的类，默认值为 false（可选）
+Can-Retransform-Classes: true    # true 表示能重转换此代理所需的类，默认值为 false （可选）
+Premain-Class:  com.weihubeats.agent.demo.AgentDemo
