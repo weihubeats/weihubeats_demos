@@ -2,8 +2,6 @@ package com.skywalking.product.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
-import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
-import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
 import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,11 +24,24 @@ public class MQConfig {
         consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
     
         consumer.subscribe("xiao-zou-topic", "*");
-
-        consumer.registerMessageListener((MessageListenerConcurrently) (msg, context) -> {
-            log.info("Receive New Messages {}", msg.toString());
+        
+        // 可以增强
+        consumer.registerMessageListener(new MessageListenerConcurrentlyImpl());
+        // 可以
+        /*consumer.registerMessageListener(new MessageListenerConcurrently() {
+            @Override
+            public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> list, ConsumeConcurrentlyContext context) {
+                log.info("Receive New Messages {}", list.toString());
+                return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
+            }
+        });*/
+        
+        // 不可以 参考 issues https://github.com/apache/skywalking/issues/5848
+        /*consumer.registerMessageListener((MessageListenerConcurrently) (list, context) -> {
+            log.info("Receive New Messages {}", list.toString());
             return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
-        });
+        });*/
+        
         return consumer;
     }
 
