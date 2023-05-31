@@ -18,6 +18,7 @@
         <module>java-base</module>
         <module>byteBuddy-demo</module>
         <module>agent-demo</module>
+        <module>netty-demo</module>
     </modules>
 
     <properties>
