@@ -3,29 +3,32 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>weihubeats_demos</artifactId>
+        <artifactId>java-demos</artifactId>
         <groupId>io.github.weihubeats</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>java-demos</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>rocketmq-demo</module>
-        <module>grpc-demo</module>
-        <module>commons-cli-demo</module>
-        <module>java-base</module>
-        <module>byteBuddy-demo</module>
-        <module>agent-demo</module>
-        <module>netty-demo</module>
-        <module>java-jmh</module>
-        <module>commons-pool-demo</module>
-    </modules>
+    <artifactId>commons-pool-demo</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
+    
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>2.11.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2</artifactId>
+            <version>2.0.33</version>
+        </dependency>
+        
+    </dependencies>
 
 </project>
