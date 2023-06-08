@@ -21,11 +21,22 @@
         <module>netty-demo</module>
         <module>java-jmh</module>
         <module>commons-pool-demo</module>
+        <module>jooq-demo</module>
     </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <junit.version>4.13.2</junit.version>
     </properties>
+    
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
 </project>

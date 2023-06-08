@@ -1,5 +1,6 @@
 package com.weihubeats.commons.pool.demo;
 
+import java.time.Duration;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 
@@ -21,11 +22,11 @@ public enum XiaZouPool {
         // 创建对象池配置
         GenericObjectPoolConfig<XiaoZou> poolConfig = new GenericObjectPoolConfig<>();
         // 对象池中最大对象数
-        poolConfig.setMaxTotal(8);
+        poolConfig.setMaxTotal(3);
         // 对象池中最小空闲对象数
-        poolConfig.setMinIdle(2);
+        poolConfig.setMinIdle(1);
         // 对象池中最大空闲对象数
-        poolConfig.setMaxIdle(4);
+        poolConfig.setMaxIdle(2);
         // 当对象池耗尽时，是否等待获取对象
         poolConfig.setBlockWhenExhausted(true);
         // 创建对象时是否进行对象有效性检查
@@ -36,15 +37,26 @@ public enum XiaZouPool {
         poolConfig.setTestOnReturn(true);
         // 空闲时是否进行对象有效性检查
         poolConfig.setTestWhileIdle(true);
+        // 获取对象最大等待时间 默认 -1 一直等待
+        poolConfig.setMaxWait(Duration.ofSeconds(2));
         // 创建对象工厂
         XiaoZouBasePooledObjectFactory objectFactory = new XiaoZouBasePooledObjectFactory();
         // 创建对象池
         objectPool = new GenericObjectPool<>(objectFactory, poolConfig);
     }
 
+    /**
+     * 从对象池中借出一个对象
+     * @return
+     * @throws Exception
+     */
     public XiaoZou borrowObject() throws Exception {
-        // 从对象池中借出一个对象
-        return objectPool.borrowObject();
+        XiaoZou zou = objectPool.borrowObject();
+        int numActive = objectPool.getNumActive();
+        int numIdle = objectPool.getNumIdle();
+        System.out.println("ThreadName:" + Thread.currentThread().getName() + " 活跃对象数量:" + numActive + " 空闲对象数量:" + numIdle);
+        System.out.println("------------------------------------------------------------");
+        return zou;
     }
 
     public void returnObject(XiaoZou myObject) {
@@ -52,13 +64,19 @@ public enum XiaZouPool {
         objectPool.returnObject(myObject);
     }
 
+    /**
+     * 获取活跃的对象数
+     * @return
+     */
     public int getNumActive() {
-        // 获取活跃的对象数
         return objectPool.getNumActive();
     }
 
+    /**
+     * 获取空闲的对象数
+     * @return
+     */
     public int getNumIdle()   {
-        // 获取空闲的对象数
         return objectPool.getNumIdle();
     }
 

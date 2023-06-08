@@ -27,7 +27,7 @@ public class XiaoZouBasePooledObjectFactory extends BasePooledObjectFactory<Xiao
     }
 
     @Override
-    public void destroyObject(PooledObject<XiaoZou> pooledObject) throws Exception {
+    public void destroyObject(PooledObject<XiaoZou> pooledObject) {
         // 销毁对象
         XiaoZou myObject = pooledObject.getObject();
         myObject.destroy();

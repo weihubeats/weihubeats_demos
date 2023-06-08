@@ -25,7 +25,6 @@ public class XiaoZou {
 
     public boolean isValid() {
         System.out.println("ThreadName:" + Thread.currentThread().getName() + " 对象" + name + "正在检验是否可用。。。。。。");
-
         return true;
     }
 
