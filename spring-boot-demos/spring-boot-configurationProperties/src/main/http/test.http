@@ -1,2 +1,2 @@
 
-http://localhost:8090/test1
+GET http://localhost:8090/test1

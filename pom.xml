@@ -1,35 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>io.github.weihubeats</groupId>
-	<artifactId>weihubeats_demos</artifactId>
-	<version>1.0-SNAPSHOT</version>
-	<modules>
-		<module>spring-boot-demos</module>
-		<module>spring-cloud-demos</module>
-		<module>java-demos</module>
-	</modules>
-	<packaging>pom</packaging>
+    <groupId>io.github.weihubeats</groupId>
+    <artifactId>weihubeats_demos</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>spring-boot-demos</module>
+        <module>spring-cloud-demos</module>
+        <module>java-demos</module>
+        <module>spring-boot-demos/spring-boot-cache</module>
+    </modules>
+    <packaging>pom</packaging>
 
-	<properties>
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
-		<spring.boot.version>2.7.0</spring.boot.version>
-		<spring.cloud.version>2021.0.4</spring.cloud.version>
-		<lombok.version>1.18.24</lombok.version>
-	</properties>
-	
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.projectlombok</groupId>
-				<artifactId>lombok</artifactId>
-				<version>${lombok.version}</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <spring.boot.version>2.7.0</spring.boot.version>
+        <spring.cloud.version>2021.0.4</spring.cloud.version>
+        <lombok.version>1.18.24</lombok.version>
+        <guava.version>32.0.0-jre</guava.version>
+    </properties>
+
+    <dependencyManagement>
+		
+        <dependencies>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+
+        </dependencies>
+
+    </dependencyManagement>
 
 </project>

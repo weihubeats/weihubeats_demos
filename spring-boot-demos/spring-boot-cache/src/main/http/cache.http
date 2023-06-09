@@ -1,0 +1,2 @@
+## 测试缓存
+GET http://localhost:8090/test
