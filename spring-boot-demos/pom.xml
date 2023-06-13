@@ -17,6 +17,7 @@
 		<module>spring-boot-docker</module>
 		<module>spring-boot-apollo</module>
         <module>spring-boot-skywalking</module>
+        <module>spring-boot-signoz</module>
     </modules>
 
 	<artifactId>spring-boot-demos</artifactId>
