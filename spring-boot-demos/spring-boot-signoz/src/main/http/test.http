@@ -1,0 +1,6 @@
+GET localhost:8090/order/get?name="小奏技术"
+Accept: application/json
+Content-Type: application/json
+
+### rpc test
+GET localhost:8091/order/rpc?name="小奏技术"

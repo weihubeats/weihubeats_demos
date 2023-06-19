@@ -1,0 +1,12 @@
+server:
+  port: 8090
+
+
+spring:
+  application:
+    name: order-service
+  profiles:
+    active: test
+
+logging:
+  config: classpath:order-logback.xml
