@@ -22,6 +22,7 @@
         <module>java-jmh</module>
         <module>commons-pool-demo</module>
         <module>jooq-demo</module>
+        <module>kafka-demo</module>
     </modules>
 
     <properties>
