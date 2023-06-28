@@ -19,8 +19,8 @@
     <dependencies>
         <dependency>
             <groupId>org.apache.rocketmq</groupId>
-            <artifactId>rocketmq-client-java</artifactId>
-            <version>5.0.4</version>
+            <artifactId>rocketmq-client</artifactId>
+            <version>5.1.0</version>
         </dependency>
     </dependencies>
 

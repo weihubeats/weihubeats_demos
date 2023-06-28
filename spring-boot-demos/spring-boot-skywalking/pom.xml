@@ -12,7 +12,7 @@
     <modules>
         <module>order-skywalking</module>
         <module>product-skywalking</module>
-    </modules>
+	</modules>
 
     <artifactId>spring-boot-skywalking</artifactId>
 
