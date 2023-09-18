@@ -5,6 +5,8 @@ server:
 spring:
   cloud:
     gateway:
+      httpclient:
+        response-timeout: 3s
       routes: 
         - id: order-service
           predicates:
