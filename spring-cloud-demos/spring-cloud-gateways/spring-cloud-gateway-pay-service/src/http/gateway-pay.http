@@ -1,0 +1,3 @@
+GET localhost:9999/pay-service/pay?timeout=1
+Accept: application/json
+Content-Type: application/json

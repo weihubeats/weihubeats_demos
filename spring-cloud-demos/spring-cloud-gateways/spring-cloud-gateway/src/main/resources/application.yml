@@ -1,0 +1,20 @@
+server:
+  port: 8090
+  
+  
+spring:
+  cloud:
+    gateway:
+      routes: 
+        - id: order-service
+          predicates:
+            - Path=/ms/order-service/**
+          filters:
+            - StripPrefix=2
+          uri: lb://order-service
+        - id: pay-service
+          predicates:
+            - Path=/ms/pay-service/**
+          filters:
+            - StripPrefix=1
+          uri: http://localhost:9999/pay-service

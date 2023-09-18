@@ -12,7 +12,8 @@
 	<modules>
 		<module>spring-cloud-kubernetes</module>
 		<module>spring-cloud-namedContextFactory</module>
-	</modules>
+        <module>spring-cloud-gateways</module>
+    </modules>
 
 	<artifactId>spring-cloud-demos</artifactId>
 
