@@ -7,6 +7,11 @@ spring:
     gateway:
       httpclient:
         response-timeout: 3s
+        pool:
+          type: fixed
+          max-connections: 200
+          max-idle-time: 5000
+          acquire-timeout: 10000
       routes: 
         - id: order-service
           predicates:
