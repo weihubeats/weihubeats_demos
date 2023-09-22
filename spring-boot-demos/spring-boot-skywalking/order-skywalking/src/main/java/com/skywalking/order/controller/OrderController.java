@@ -5,9 +5,16 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.common.message.Message;
+import org.apache.skywalking.apm.toolkit.trace.SupplierWrapper;
+import org.apache.skywalking.apm.toolkit.trace.TraceContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.stream.IntStream;
 
 /**
  * @author : wh
@@ -23,6 +30,8 @@ public class OrderController {
     private final OrderClient orderClient;
 
     private final DefaultMQProducer producer;
+
+    private final ExecutorService executorService = Executors.newFixedThreadPool(2);
 
     @GetMapping("/get")
     public String get(String name) {
@@ -41,6 +50,42 @@ public class OrderController {
         producer.send(message);
         orderClient.get(name);
         return "order:" + name;
+    }
+
+    @GetMapping("/executorService")
+    public void executorService() {
+        log.info("test log parent traceId:{}", TraceContext.traceId());
+
+        // 异步线程
+        Thread thread = new Thread(() -> {
+            log.info("test log thread traceId:{}", TraceContext.traceId());
+        });
+        thread.start();
+
+        CompletableFuture.runAsync(() -> {
+            log.info("test1 log CompletableFuture traceId:{}", TraceContext.traceId());
+        });
+
+        CompletableFuture.supplyAsync(()->{
+            log.info("test2 log CompletableFuture traceId:{}", TraceContext.traceId());
+            return "SupplierWrapper";
+        }).thenAccept(System.out::println);
+
+        CompletableFuture.supplyAsync(SupplierWrapper.of(()->{
+            log.info("test3 log CompletableFuture traceId:{}", TraceContext.traceId());
+            return "SupplierWrapper";
+        })).thenAccept(System.out::println);
+
+        IntStream.rangeClosed(1, 3).parallel().forEach(i -> {
+            log.info("test log IntStream traceId:{}", TraceContext.traceId());
+        });
+
+        // 线程池线程
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
+        executorService.submit(() -> {
+            log.info("test log executorService traceId:{}", TraceContext.traceId());
+        });
+        executorService.shutdown();
     }
     
     

@@ -1,6 +1,6 @@
 server:
   port: 8090
-  
+
   
 spring:
   cloud:
@@ -27,3 +27,18 @@ spring:
           uri: http://localhost:9999/pay-service
           metadata:
             response-timeout: 5000
+  application:
+    name: xiaozou-gateway
+
+
+#csp:
+#  sentinel:
+#    dashboard:
+#      server: 127.0.0.1:8080
+#    api:
+#      port: 8719
+#sentinel:
+#  dashboard:
+#    auth:
+#      username: sentinel
+#      password: sentinel
