@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.common.message.Message;
+import org.apache.skywalking.apm.toolkit.trace.RunnableWrapper;
 import org.apache.skywalking.apm.toolkit.trace.SupplierWrapper;
 import org.apache.skywalking.apm.toolkit.trace.TraceContext;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -58,21 +59,24 @@ public class OrderController {
 
         // 异步线程
         Thread thread = new Thread(() -> {
-            log.info("test log thread traceId:{}", TraceContext.traceId());
+            log.info("test thread log thread traceId:{}", TraceContext.traceId());
         });
         thread.start();
 
+        Thread thread1 = new Thread(new RunnableWrapper(() -> log.info("test thread1 log thread traceId:{}", TraceContext.traceId())));
+        thread1.start();
+
         CompletableFuture.runAsync(() -> {
-            log.info("test1 log CompletableFuture traceId:{}", TraceContext.traceId());
+            log.info("test runAsync log CompletableFuture traceId:{}", TraceContext.traceId());
         });
 
         CompletableFuture.supplyAsync(()->{
-            log.info("test2 log CompletableFuture traceId:{}", TraceContext.traceId());
+            log.info("test supplyAsync log CompletableFuture traceId:{}", TraceContext.traceId());
             return "SupplierWrapper";
         }).thenAccept(System.out::println);
 
         CompletableFuture.supplyAsync(SupplierWrapper.of(()->{
-            log.info("test3 log CompletableFuture traceId:{}", TraceContext.traceId());
+            log.info("supplyAsync SupplierWrapper log CompletableFuture traceId:{}", TraceContext.traceId());
             return "SupplierWrapper";
         })).thenAccept(System.out::println);
 

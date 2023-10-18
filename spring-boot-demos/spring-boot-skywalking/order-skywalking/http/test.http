@@ -4,3 +4,6 @@ Content-Type: application/json
 
 ### rpc test
 GET localhost:8091/order/rpc?name="小奏技术"
+
+### 线程池
+GET localhost:8091/order/executorService?name="小奏技术"
