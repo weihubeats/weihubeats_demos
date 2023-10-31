@@ -1,6 +1,6 @@
 package com.java.base.limter;
 
-import java.util.concurrent.ConcurrentHashMap;
+import java.time.LocalTime;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -22,26 +22,29 @@ public class FixedWindowRateLimiter {
 	 * 窗口大小(毫秒)
 	 */
 	private final long windowSizeInMillis;
-	
+
 	/**
-	 * 请求记录
+	 * 开始时间
 	 */
-	private final ConcurrentHashMap<Long, AtomicInteger> requestRecord;
+	private  static  long START_TIME = System.currentTimeMillis();
+
+	/**
+	 * 计数器 可以使用原子类，方法已经添加了 synchronized
+	 */
+	private static final AtomicInteger REQCOUNT = new AtomicInteger();
+	
 
 	public FixedWindowRateLimiter(int limit, long windowSize, TimeUnit timeUnit) {
 		this.limit = limit;
 		this.windowSizeInMillis = timeUnit.toMillis(windowSize);
-		this.requestRecord = new ConcurrentHashMap<>();
 	}
 
-	public boolean allowRequest() {
-		long currentTime = System.currentTimeMillis();
-		long windowStart = currentTime - windowSizeInMillis;
-		// 清理过期的请求记录
-		requestRecord.entrySet().removeIf(entry -> entry.getKey() < windowStart);
-		AtomicInteger requestCount = requestRecord.computeIfAbsent(currentTime, k -> new AtomicInteger(0));
-		int updatedCount = requestCount.incrementAndGet();
-		return updatedCount <= limit;
+	public synchronized boolean allowRequest() {
+		if ((System.currentTimeMillis() - START_TIME) > windowSizeInMillis) {
+			REQCOUNT.set(0);
+			START_TIME = System.currentTimeMillis();
+		}
+		return REQCOUNT.incrementAndGet() <= limit;
 	}
 
 	public static void main(String[] args) throws Exception{
@@ -53,9 +56,12 @@ public class FixedWindowRateLimiter {
 			int finalI = i;
 			executor.execute(() -> {
 				if (fixedWindowRateLimiter.allowRequest()) {
-					System.out.println("处理请求 " + finalI);
+					LocalTime now = LocalTime.now();
+					System.out.println(now + " 处理请求 " + finalI);
+
 				} else {
-					System.out.println("超过请求限制，无法处理请求 " + finalI);
+					LocalTime now = LocalTime.now();
+					System.out.println(now + " 超过请求限制，无法处理请求 " + finalI);
 				}
 			});
 		}
