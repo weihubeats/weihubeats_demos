@@ -17,7 +17,7 @@ public class SQLConsumer {
 
 
 	public static void main(String[] args) throws Exception {
-		DefaultMQPushConsumer consumer = new DefaultMQPushConsumer(GID);
+		DefaultMQPushConsumer consumer = MQUtils.createLocalConsumer(GID);
 		String sql = "gray is not null and gray = 'dev1'";
 		consumer.subscribe(MQUtils.TOPIC, MessageSelector.bySql(sql));
 		consumer.registerMessageListener((MessageListenerConcurrently) (msg, context) -> {
