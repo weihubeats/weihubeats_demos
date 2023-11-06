@@ -2,6 +2,7 @@ package com.weihubeats.boot.cache;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 
 /**
  *@author : wh
@@ -9,9 +10,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *@description:
  */
 @SpringBootApplication
-public class Application {
+@EnableCaching
+public class CacheApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(CacheApplication.class, args);
 	}
 }

@@ -18,7 +18,8 @@
 		<module>spring-boot-apollo</module>
         <module>spring-boot-skywalking</module>
         <module>spring-boot-signoz</module>
-    </modules>
+		<module>spring-boot-base</module>
+	</modules>
 
 	<artifactId>spring-boot-demos</artifactId>
 
