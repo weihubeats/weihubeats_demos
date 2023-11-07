@@ -24,12 +24,21 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		
-		<!--该依赖是AOP核心 必须天剑-->
+		<!--该依赖是AOP核心 必须添加-->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
 		</dependency>
+
+		<!--探针-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		
 	</dependencies>
+
+
 
 
 	<dependencyManagement>
