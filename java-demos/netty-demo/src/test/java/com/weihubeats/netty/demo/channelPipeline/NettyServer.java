@@ -32,7 +32,6 @@ public class NettyServer {
 		EventLoopGroup workerGroup = new NioEventLoopGroup();
 		ServerBootstrap b = new ServerBootstrap();
 
-
 		b.group(bossGroup, workerGroup)
 				.channel(NioServerSocketChannel.class)
 				.option(ChannelOption.SO_BACKLOG, 1024)
@@ -61,7 +60,6 @@ public class NettyServer {
 								System.out.println("开始给客户端发送消息");
 								ctx.writeAndFlush(firstMessage);
 							}
-							
 							@Override
 							public void channelRegistered(ChannelHandlerContext ctx) {
 								System.out.println("连接上来了");
@@ -74,8 +72,4 @@ public class NettyServer {
 		ChannelFuture future = b.bind(8888).sync();
 		future.channel().closeFuture().sync();
 	}
-
-	
-
-
 }

@@ -6,7 +6,7 @@ import com.googlecode.concurrentlinkedhashmap.Weighers;
 /**
  * @author : wh
  * @date : 2023/10/11 11:24
- * @description:
+ * @description: 基于LRU策略的缓存
  */
 public class ConcurrentLinkedHashMapDemo {
     

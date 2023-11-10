@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 /**
  *@author : wh
  *@date : 2023/10/31 17:58
- *@description:
+ *@description: 基于 DelayQueue 实现延时任务
  */
 public class DelayedQueueDemo {
 

@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  *@author : wh
  *@date : 2023/10/31 15:11
- *@description:
+ *@description: 滑动窗口限流器
  */
 public class SlidingWindowRateLimiter {
 

@@ -56,9 +56,8 @@ public class NettyClient {
 								ctx.writeAndFlush(firstMessage);
 							}
 
-
 							@Override
-							protected void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
+							protected void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) {
 								//buf.readableBytes()获取缓冲区可读的字节数
 								byte[] req = new byte[msg.readableBytes()];
 								// 将缓冲区的字节数组复制到新的byte数组中
