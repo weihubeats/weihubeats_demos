@@ -172,7 +172,6 @@ public class SpringTest {
 		ParameterNameDiscoverer discoverer = new LocalVariableTableParameterNameDiscoverer();
 		SpelExpressionParser parser = new SpelExpressionParser();
 		StandardEvaluationContext context = new StandardEvaluationContext();
-
 		// 获取方法参数名
 		Method method = MyClass.class.getMethod("myMethod", String.class, int.class);
 		String[] parameterNames = discoverer.getParameterNames(method);
@@ -181,6 +180,16 @@ public class SpringTest {
 			System.out.println("parameterName " + parameterName);
 		}
 
+	}
+	
+	@Test
+	public void testParameterNameDiscoverer() throws Exception{
+		ParameterNameDiscoverer discoverer = new LocalVariableTableParameterNameDiscoverer();
+		Method method = MyClass.class.getMethod("myMethod", String.class, int.class);
+		String[] parameterNames = discoverer.getParameterNames(method);
+		for (String parameterName : parameterNames) {
+			System.out.println("parameterName " + parameterName);// out  parameterName name parameterName age
+		}
 	}
 	
 	@Data

@@ -19,7 +19,8 @@
         <module>spring-boot-skywalking</module>
         <module>spring-boot-signoz</module>
 		<module>spring-boot-base</module>
-	</modules>
+        <module>spring-boot-dubbo-3x</module>
+    </modules>
 
 	<artifactId>spring-boot-demos</artifactId>
 
