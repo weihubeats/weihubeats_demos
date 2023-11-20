@@ -23,7 +23,8 @@
         <module>commons-pool-demo</module>
         <module>jooq-demo</module>
         <module>kafka-demo</module>
-	</modules>
+        <module>data-structure-demo</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

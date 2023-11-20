@@ -35,7 +35,7 @@ public class Cli {
         }
 
         if (cmd.hasOption("t")){
-            System.out.printf("system time has setted  %s \n",cmd.getOptionValue("t"));
+            System.out.printf("system time has setted  %s ",cmd.getOptionValue("t"));
             return;
         }
 

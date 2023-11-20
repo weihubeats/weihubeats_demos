@@ -48,7 +48,7 @@ public class SpringTest {
 		Integer value2 = parser.parseExpression("0x208").getValue(Integer.class);// 520 十六进制  0x208
 		Boolean value3 = parser.parseExpression("true").getValue(Boolean.class);// true
 		Object value4 = parser.parseExpression("null").getValue();
-		System.out.printf("value: %s\n value1: %s\n value2: %s\n value3: %s\n value4: %s\n", value, value1, value2, value3, value4);
+		System.out.printf("value: %s value1: %s value2: %s value3: %s value4: %s", value, value1, value2, value3, value4);
 	}
 	
 
