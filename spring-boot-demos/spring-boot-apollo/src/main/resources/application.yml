@@ -7,7 +7,7 @@ app:
 apollo:
   bootstrap:
     enabled: true
-    namespaces: test.yml
+    namespaces: test.yml,application
   meta: http://127.0.0.1:8080
 
         
