@@ -20,6 +20,8 @@
         <module>spring-boot-signoz</module>
 		<module>spring-boot-base</module>
         <module>spring-boot-dubbo-3x</module>
+		<module>spring-boot-cache</module>
+		<module>spring-boot-cache-redis</module>
     </modules>
 
 	<artifactId>spring-boot-demos</artifactId>

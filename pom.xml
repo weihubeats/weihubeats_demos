@@ -11,7 +11,6 @@
         <module>spring-boot-demos</module>
         <module>spring-cloud-demos</module>
         <module>java-demos</module>
-        <module>spring-boot-demos/spring-boot-cache</module>
     </modules>
     <packaging>pom</packaging>
 
