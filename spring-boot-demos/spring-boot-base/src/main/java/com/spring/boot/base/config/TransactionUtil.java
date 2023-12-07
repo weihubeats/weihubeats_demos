@@ -1,3 +1,4 @@
+/*
 package com.spring.boot.base.config;
 
 import java.util.HashSet;
@@ -8,11 +9,13 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
+*/
 /**
  * @author : wh
  * @date : 2023/11/16 10:42
  * @description:
- */
+ *//*
+
 @Component
 @RequiredArgsConstructor
 @Slf4j
@@ -37,3 +40,4 @@ public class TransactionUtil {
     
 
 }
+*/
