@@ -22,6 +22,7 @@
         <module>spring-boot-dubbo-3x</module>
 		<module>spring-boot-cache</module>
 		<module>spring-boot-cache-redis</module>
+        <module>spring-boot-kafka</module>
     </modules>
 
 	<artifactId>spring-boot-demos</artifactId>
