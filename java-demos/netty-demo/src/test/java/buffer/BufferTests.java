@@ -1,7 +1,8 @@
-package com.weihubeats.netty.demo.buffer;
+package buffer;
+
+import org.junit.Test;
 
 import java.nio.ByteBuffer;
-import org.junit.Test;
 
 /**
  * @author : wh

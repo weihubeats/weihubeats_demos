@@ -1,7 +1,6 @@
 package com.weihubeats.netty.demo.recycler;
 
 import io.netty.util.Recycler;
-import org.junit.Test;
 
 /**
  * @author : wh
@@ -12,7 +11,6 @@ public class RecyclerTest {
     
     
     
-    @Test
     public void test() {
 
         // 1、从对象池获取 User 对象

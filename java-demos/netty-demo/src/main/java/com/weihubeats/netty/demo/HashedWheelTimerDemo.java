@@ -1,12 +1,12 @@
 package com.weihubeats.netty.demo;
 
-import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
-
 import io.netty.util.HashedWheelTimer;
 import io.netty.util.Timeout;
 import io.netty.util.Timer;
+
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 /**
  *@author : wh
@@ -16,7 +16,6 @@ import io.netty.util.Timer;
 public class HashedWheelTimerDemo {
 
 	public static void main(String[] args) {
-
 		Timer timer = new HashedWheelTimer();
 		Timeout timeout1 = timer.newTimeout(timeout -> System.out.println("timeout1: " + LocalDateTime.now()), 10, TimeUnit.SECONDS);
 		if (!timeout1.isExpired()) {
