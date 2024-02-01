@@ -8,7 +8,7 @@ import org.apache.dubbo.config.annotation.DubboService;
  * @date : 2023/11/13 11:25
  * @description:
  */
-@DubboService
+@DubboService(tag = "${PROVIDER-TAG}")
 public class DemoServiceImpl implements DemoService {
 
     @Override
