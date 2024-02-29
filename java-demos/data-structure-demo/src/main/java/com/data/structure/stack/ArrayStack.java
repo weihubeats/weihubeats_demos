@@ -1,33 +1,75 @@
 package com.data.structure.stack;
 
+import java.util.Arrays;
+
 /**
  * @author : wh
  * @date : 2023/11/17 19:47
- * @description: 数组实现栈
+ * @description: 数组实现栈 todo 泛型+自动扩容
  */
-public class ArrayStack {
+public class ArrayStack<T> {
 
     /**
      * 数据
      */
-    int[] stack;
-
-    /**
-     * 栈容量
-     */
-    int maxSize;
+    T[] elements;
 
     /**
      * 栈顶
      */
     int top;
 
-    /**
-     * 栈是否已满
-     * @return
-     */
-    public boolean isFull() {
-        return stack.length == maxSize;
+    public ArrayStack(int capacity) {
+        elements = (T[])new Object[capacity];
+        this.top = -1;
     }
-    
+
+    public boolean push(T value) {
+        if (top == elements.length - 1) {
+            elements = Arrays.copyOf(elements, elements.length * 2);
+        }
+        elements[++top] = value;
+        return true;
+    }
+
+    public T pop() {
+        if (isEmpty()) {
+            throw new RuntimeException("栈空");
+
+        }
+        return elements[top--];
+
+    }
+
+    public T peek() {
+        if (isEmpty()) {
+            throw new RuntimeException("栈空");
+        }
+        return elements[top];
+    }
+
+    public boolean isEmpty() {
+        return top == -1;
+    }
+
+    public int size() {
+        return top + 1;
+    }
+
+    public static void main(String[] args) {
+        ArrayStack arrayStack = new ArrayStack(5);
+        arrayStack.push("1");
+        arrayStack.push("2");
+        arrayStack.push("3");
+        arrayStack.push("4");
+        arrayStack.push("5");
+
+        System.out.println(arrayStack.pop());
+        System.out.println(arrayStack.pop());
+        System.out.println(arrayStack.pop());
+        System.out.println(arrayStack.pop());
+        System.out.println(arrayStack.pop());
+
+    }
+
 }
