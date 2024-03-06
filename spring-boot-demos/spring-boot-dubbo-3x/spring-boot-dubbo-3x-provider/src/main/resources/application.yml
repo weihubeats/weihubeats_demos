@@ -1,6 +1,6 @@
 dubbo:
   application:
-    name: dubbo-springboot-demo-provider
+    name: weihubeats-provider
   protocol:
     name: dubbo
     port: -1

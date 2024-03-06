@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnableDubbo
 public class ProviderApplication {
     public static void main(String[] args) {
+//        System.setProperty("dubbo.provider.tag", "property-wh-test");
         SpringApplication.run(ProviderApplication.class, args);
     }
 }

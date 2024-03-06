@@ -8,11 +8,12 @@ import org.apache.dubbo.config.annotation.DubboService;
  * @date : 2023/11/13 11:25
  * @description:
  */
-@DubboService(tag = "${PROVIDER-TAG}")
+@DubboService(tag = "weihubeats-tag")
 public class DemoServiceImpl implements DemoService {
 
     @Override
     public String sayHello(String name) {
-        return "Hello " + name;
+        return "weihubeats-tag" + name;
     }
+    
 }

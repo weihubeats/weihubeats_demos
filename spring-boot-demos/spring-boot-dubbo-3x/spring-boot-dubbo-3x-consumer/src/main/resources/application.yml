@@ -1,6 +1,6 @@
 dubbo:
   application:
-    name: dubbo-springboot-demo-consumer
+    name: weihubeats-provider-consumer
     qos-port: 33333
   protocol:
     name: dubbo
