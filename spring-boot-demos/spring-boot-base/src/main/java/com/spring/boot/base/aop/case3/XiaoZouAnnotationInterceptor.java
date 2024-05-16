@@ -13,9 +13,9 @@ import org.aopalliance.intercept.MethodInvocation;
 public class XiaoZouAnnotationInterceptor implements MethodInterceptor {
 	@Override
 	public Object invoke(MethodInvocation invocation) throws Throwable {
-		System.out.println("进来了");
+//		System.out.println("进来了");
 		Method method = invocation.getMethod();
-		System.out.println("进来了");
+//		System.out.println("进来了");
 		return invocation.proceed();
 	}
 }

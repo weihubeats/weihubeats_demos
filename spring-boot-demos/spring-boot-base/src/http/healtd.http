@@ -1,0 +1,9 @@
+### 存活
+GET http://localhost:8091/actuator/health/liveness
+
+
+### Liveness Probe
+GET http://localhost:8091/actuator/health/readiness
+
+###
+GET http://localhost:8091/order/test
