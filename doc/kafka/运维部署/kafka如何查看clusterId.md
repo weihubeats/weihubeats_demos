@@ -12,7 +12,6 @@
 文件大致是这样
 ```properties
 #
-#Sun Oct 08 11:07:39 CST 2023
 node.id=4
 version=1
 cluster.id=mzZehZx0RNmke32QRMpNk
