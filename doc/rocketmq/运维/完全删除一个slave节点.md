@@ -12,7 +12,7 @@ kill -pid
 需要删除的元数据
 1. 消息存储相关数据
 ```shell
-/data/rocketmq/store
+/data/rmqstore
 ```
 
 3. 删除主备的版本阶段、纪元等文件
