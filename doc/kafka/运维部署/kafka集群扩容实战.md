@@ -1,14 +1,82 @@
-## 扩容
-将服务器添加到 Kafka 集群很容易，只需为它们分配一个唯一的代理 ID 并在您的新服务器上启动 Kafka。
-然而，这些新服务器不会自动分配任何数据分区，因此除非将分区移动到它们，否则它们将不会做任何工作，直到创建新主题。因此，通常当您将机器添加到集群时，您会希望将一些现有数据迁移到这些机器上。
-迁移数据的过程是手动启动的，但完全自动化。
+## 背景
 
-## 过程
+线上的`Kafka`集群采用的部署方式为`KRaft`模式，3个`KRaft`+2个`broker`。`Kafka`版本`kafka_2.13-3.5.0`
+
+由于一些原因要下线掉旧的`broker`新增三个`broker`
+
+## 如何扩容
+将新服务器添加到`Kafka`集群很容易，只需为它们分配一个唯一的`brokerId` 即可，新的`broker`就会自动加入到`Kafka`集群中
+
+不过这些新服务器不会自动分配任何数据分区，也就是原先的`topic`的数据不会存在新集群，也不会分担原来`topic`的请求
+
+如果要旧集群的`topic`在新集群添加分区数据，就需要手动迁移。
+
+分区迁移`Kafka`提供了`kafka-reassign-partitions.sh`脚本，数据迁移过程是手动，但是完全自动化
+
+## 实战
 
 ### 1. 优化linux内核参数
 
 ```shell
 sh os.sh
+```
+
+os的详细脚本如下
+```shell
+#!/bin/bash
+
+# 确保脚本以root权限运行
+if [ "$(id -u)" != "0" ]; then
+   echo "该脚本必须以root权限运行" 1>&2
+   exit 1
+fi
+
+# 更新文件描述符限制
+echo "* soft nofile 100000" >> /etc/security/limits.conf
+echo "* hard nofile 100000" >> /etc/security/limits.conf
+
+# 更新虚拟内存设置
+sysctl -w vm.swappiness=1
+echo "vm.swappiness=1" >> /etc/sysctl.conf
+
+sysctl -w vm.max_map_count=262144
+echo "vm.max_map_count=262144" >> /etc/sysctl.conf
+
+# 更新网络设置
+sysctl -w net.ipv4.tcp_fin_timeout=30
+sysctl -w net.ipv4.tcp_tw_reuse=1
+sysctl -w net.core.rmem_max=16777216
+sysctl -w net.core.wmem_max=16777216
+sysctl -w net.ipv4.tcp_max_syn_backlog=8096
+sysctl -w net.core.somaxconn=8192
+sysctl -w net.core.netdev_max_backlog=4096
+sysctl -w net.ipv4.tcp_rmem='4096 87380 16777216'
+sysctl -w net.ipv4.tcp_wmem='4096 65536 16777216'
+sysctl -w net.ipv4.tcp_keepalive_intvl=30
+sysctl -w net.ipv4.tcp_keepalive_probes=5
+sysctl -w net.ipv4.tcp_keepalive_time=120
+
+echo "net.ipv4.tcp_fin_timeout=30" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_tw_reuse=1" >> /etc/sysctl.conf
+echo "net.core.rmem_max=16777216" >> /etc/sysctl.conf
+echo "net.core.wmem_max=16777216" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_max_syn_backlog=8096" >> /etc/sysctl.conf
+echo "net.core.somaxconn=8192" >> /etc/sysctl.conf
+echo "net.core.netdev_max_backlog=4096" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_rmem=4096 87380 16777216" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_wmem=4096 65536 16777216" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_keepalive_intvl=30" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_keepalive_probes=5" >> /etc/sysctl.conf
+echo "net.ipv4.tcp_keepalive_time=120" >> /etc/sysctl.conf
+
+# 更新最大线程数限制
+echo "* soft nproc 4096" >> /etc/security/limits.d/90-nproc.conf
+echo "* hard nproc 4096" >> /etc/security/limits.d/90-nproc.conf
+
+# 应用sysctl设置
+sysctl -p
+
+echo "系统调优完成。可能需要重启以应用某些更改。"
 ```
 
 ### 2. 安装jdk11
@@ -200,4 +268,10 @@ export KAFKA_HEAP_OPTS="-Xmx6G -Xms6G"&&JMX_PORT=9988 nohup sh /data/kafka_2.13-
 > 这里的JVM内存给6G基本就够了，Kafka主要使用的是堆外内存
 
 
-需要注意如果有旧节点下线可能会出现消息发送正常，消息消费失败的情况，原因可能是`__consumer_offsets`这个topic没有自动进行分区迁移，仅在旧`broker`存在
+### 8. 旧节点下线
+
+这里由于线上的业务允许一定时间不可用。所以可以直接进行下线旧`broker`，不需要进行分区迁移，然后重新创建`topic`即可
+
+> 最好的无损方式还是先进行分区迁移，然后再下线旧`broker`
+
+需要注意如果有旧节点下线可能会出现消息发送正常，消息消费失败的情况，原因可能是`__consumer_offsets`这个`topic`没有自动进行分区迁移，仅在旧`broker`存在
