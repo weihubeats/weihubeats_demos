@@ -8,4 +8,6 @@ package com.weihubeats.netty.demo.heartBeat;
 public interface HeartBeatConstant {
 
     String HEART_BEAT = "xiaozou ping";
+    
+    String CLONE_MSG = "Closing connection due to idle timeout...";
 }

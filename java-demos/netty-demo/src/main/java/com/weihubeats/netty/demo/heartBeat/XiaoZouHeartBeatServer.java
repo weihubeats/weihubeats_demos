@@ -23,6 +23,7 @@ public class XiaoZouHeartBeatServer {
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
             ServerBootstrap bootstrap = new ServerBootstrap();
+            NettyConnectManageHandler manageHandler = new NettyConnectManageHandler();
             bootstrap.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class).childHandler(new ChannelInitializer<SocketChannel>() {
                 @Override
                 protected void initChannel(SocketChannel ch) {
@@ -30,11 +31,11 @@ public class XiaoZouHeartBeatServer {
                         .addLast(StringDecoder.class.getSimpleName(), new StringDecoder())
                         .addLast(StringEncoder.class.getSimpleName(), new StringEncoder())
                         .addLast(new IdleStateHandler(0, 0, 10))
-                        .addLast(new NettyConnectManageHandler()).addLast(new ReadMsgHandler());
+                        .addLast(manageHandler)
+                        .addLast(new ReadMsgHandler());
 
                 }
             });
-
             ChannelFuture future = bootstrap.bind(9000).sync();
             System.out.println("xiaozou netty server start done.");
             future.channel().closeFuture().sync();
