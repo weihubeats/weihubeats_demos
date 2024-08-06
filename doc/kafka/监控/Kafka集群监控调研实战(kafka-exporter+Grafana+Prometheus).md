@@ -125,3 +125,6 @@ services:
 总的来说本次对`broker`的监控市面上的选择并不多，也并没有很官方和常用的`dashboard`使用，实际的使用还需要自己多开发研究
 
 对于3.x以上的`kafka`，对于`controller`的监控还是比较少的。
+
+## 参考
+- https://mp.weixin.qq.com/s/ZG3DjRoJ3IDeln-_KbvTDQ
