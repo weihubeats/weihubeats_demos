@@ -5,7 +5,7 @@
 
 发现官方提供了`agollo`的`golang` sdk
 - [agollo](https://github.com/apolloconfig/agollo)
-  ![img.png](imags/github-agollo.png)
+  ![img.png](images/github-agollo.png)
 
 > 实际维护频率也处于比较低频的状态
 

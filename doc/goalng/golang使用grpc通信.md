@@ -6,14 +6,14 @@
 
 [github下载地址](https://github.com/protocolbuffers/protobuf/releases)
 
-![protocol-buffers-github.png](imags/protocol-buffers-github.png)
+![protocol-buffers-github.png](images/protocol-buffers-github.png)
 
 根据自己的系统选择不同的版本，我这里是`arm`架构，所以选择`arm`压缩包即可
 
 
 解压完成后就是这个样子
 
-![protocol-buffers-zip.png](imags/protocol-buffers-zip.png)
+![protocol-buffers-zip.png](images/protocol-buffers-zip.png)
 
 
 然后直接执行 `bin`目录下面的`protoc`脚本
@@ -21,7 +21,7 @@
 
 执行完后再执行`protoc --version`看是否安装成功
 
-![protocol-buffers-github.png](imags/protocol-buffers-github.png)
+![protocol-buffers-github.png](images/protocol-buffers-github.png)
 
 可以看到我的版本是`libprotoc 3.21.9`
 
@@ -41,7 +41,7 @@ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2
 >一种接口类型(或存根) ，供客户端调用的服务方法。
 >服务器要实现的接口类型。
 
-![protoc-gen.png](imags/protoc-gen.png)
+![protoc-gen.png](images/protoc-gen.png)
 
 上述命令会默认将插件安装到$GOPATH/bin，为了protoc编译器能找到这些插件，请确保你的$GOPATH/bin在环境变量中。
 
@@ -57,14 +57,14 @@ protoc-gen-go --version
 protoc-gen-go-grpc --version
 ```
 
-![protoc-gen-version-check.png](imags/protoc-gen-version-check.png)
+![protoc-gen-version-check.png](images/protoc-gen-version-check.png)
 
 
 ## 实战
 
 ### 整体目录
 
-![grpc-demo-catalogs.png](imags/grpc-demo-catalogs.png)
+![grpc-demo-catalogs.png](images/grpc-demo-catalogs.png)
 
 ### 引入grpc依赖
 
@@ -72,7 +72,7 @@ protoc-gen-go-grpc --version
 go get -u google.golang.org/grpc
 ```
 
-![grpc-go-get.png](imags/grpc-go-get.png)
+![grpc-go-get.png](images/grpc-go-get.png)
 
 ### 编写 hello.proto 文件
 ```proto
@@ -108,7 +108,7 @@ message HelloReply {
  protoc --go_out=. --go-grpc_out=. hello.proto
 ```
 
-![protoc-gen.png](imags/protoc-gen.png)
+![protoc-gen.png](images/protoc-gen.png)
 
 ### 编写服务端代码
 
