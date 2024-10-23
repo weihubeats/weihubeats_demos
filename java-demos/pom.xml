@@ -24,11 +24,14 @@
         <module>jooq-demo</module>
         <module>kafka-demo</module>
         <module>data-structure-demo</module>
+        <module>design-patterns-demo</module>
+        <module>raft-demos</module>
+        <module>json-schema-demo</module>
     </modules>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+<!--        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>-->
         <junit.version>4.13.2</junit.version>
     </properties>
     
