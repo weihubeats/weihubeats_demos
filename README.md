@@ -5,4 +5,7 @@
 [博客地址](https://weihubeats.blog.csdn.net/)
 
 # jdk版本
-11
+
+部分项目采用jdk11，部分项目采用jdk17
+
+
