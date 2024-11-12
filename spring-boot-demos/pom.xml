@@ -24,7 +24,8 @@
 		<module>spring-boot-cache-redis</module>
         <module>spring-boot-kafka</module>
         <module>spring-boot-ai-demos</module>
-    </modules>
+		<module>spring-boot-liteflow</module>
+	</modules>
 
 	<artifactId>spring-boot-demos</artifactId>
 
