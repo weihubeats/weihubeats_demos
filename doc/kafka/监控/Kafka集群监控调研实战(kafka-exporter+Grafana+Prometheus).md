@@ -80,7 +80,7 @@ http://192.168.1.1:9308/metrics
 
 即可得到相关的指标
 
-如果要使用`danielqsj/kafka_exporter`尽兴部署，也非常简单，这里我给出我的`docker-compose.yaml`配置
+如果要使用`danielqsj/kafka_exporter`进行部署，也非常简单，这里我给出我的`docker-compose.yaml`配置
 ```yaml
 version: '3.1'
 services:
