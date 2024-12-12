@@ -3,7 +3,7 @@
 
 在`spring boot` `2.7.0-M2-Release`的发版记录会发现如下说明
 
-![spring-factories-deprecated.png](./images/spring-factories-deprecated.png)
+![spring-factories-deprecated.png](images/spring-factories-deprecated.png)
 
 > [原文地址](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.7.0-M2-Release-Notes)
 
@@ -75,7 +75,7 @@ com.nebula.distribute.lock.autoconfigure.NebulaDistributedLockAutoConfiguration
 
 比如我们随便看看`spirng cloud kubernetes`源码
 
-![spring-cloud-kubernetes-auto-imports.png](./images/spring-cloud-kubernetes-auto-imports.png)
+![spring-cloud-kubernetes-auto-imports.png](images/spring-cloud-kubernetes-auto-imports.png)
 
 不过值得注意的是他们项目好像也保留了`spring.factories`文件，可能是为了兼容低版本的`spring boot`吧
 
