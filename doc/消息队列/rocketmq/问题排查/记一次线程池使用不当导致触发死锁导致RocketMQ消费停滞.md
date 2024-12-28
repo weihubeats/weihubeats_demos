@@ -18,7 +18,7 @@
 ![queue-consumer-detail.png](../images/queue-consumer-detail.png)
 
 
-可以看到`consumer`中并不是全部的`queue`消费都堆积了，只有一个`queuq`消息堆积了。
+可以看到`consumer`中并不是全部的`queue`消费都堆积了，只有一个`queue`消息堆积了。
 
 这个消费者订阅的`topic`是分区有序的，正常来说分区有序，如果某个分区的消息单条消息出现了消费异常，必须要等这条消息消费成功(或者是重试结束)后才能继续消费后面的消息。
 
