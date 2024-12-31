@@ -129,25 +129,18 @@ private int compressLevel = Integer.parseInt(System.getProperty(MixAll.MESSAGE_C
 - 发送消息
 
 ```java
+    private static Message buiderMessage() {
+    return new Message(TOPIC, TAG, generateLargeContent());
+}
 
-    private static Message buiderMessage(String message) {
-        return new Message(TOPIC, TAG, message.getBytes());
+    private static byte[] generateLargeContent() {
+    byte[] largeMessageBody = new byte[5000]; // 5000字节，超过4KB
+    // 填充消息体内容
+    for (int i = 0; i < largeMessageBody.length; i++) {
+        largeMessageBody[i] = (byte) (i % 256);
     }
-    private static String generateLargeContent() {
-        // 创建一个StringBuilder来构建大字符串
-        StringBuilder sb = new StringBuilder();
-        // 假设要生成5MB的内容
-        int targetSize = 2 * 1024 * 1024; // 5MB
-
-        // 创建基础字符串
-        String baseStr = "This is a test message for RocketMQ large message testing. ";
-
-        // 重复添加直到达到目标大小
-        while (sb.length() < targetSize) {
-            sb.append(baseStr);
-        }
-        return sb.toString();
-    }
+    return largeMessageBody;
+}
 ```
 
 这里只给出构造大于4k的代码，消息发送的代码很简单。我们随便写写即可
@@ -156,7 +149,7 @@ private int compressLevel = Integer.parseInt(System.getProperty(MixAll.MESSAGE_C
 
 ![zlib-compress.png](../images/zlib-compress.png)
 
-通过`debug`我们可以看到，原始的body大小为`2097155`，压缩后的`data`大小为`6173`，压缩比例是99.71%
+通过`debug`我们可以看到，原始的body大小为`5000`，压缩后的`data`大小为`324`，可以看到压缩效果还是很明显的
 
 因为我们都是生成的重复字符串
 
