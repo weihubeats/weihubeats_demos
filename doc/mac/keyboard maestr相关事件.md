@@ -1,0 +1,3 @@
+- 终止: cancel all macros
+- 循环: repeat
+- 鼠标点击: mouse and click
