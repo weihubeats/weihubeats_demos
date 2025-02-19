@@ -25,7 +25,8 @@
         <module>spring-boot-kafka</module>
         <module>spring-boot-ai-demos</module>
 		<module>spring-boot-liteflow</module>
-	</modules>
+        <module>spring-boot-security-demos</module>
+    </modules>
 
 	<artifactId>spring-boot-demos</artifactId>
 
